@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class GUIManager : MonoBehaviour
+public class GUIManager : Singleton<GUIManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    public Text coinCountingText;
+
+    public override void Awake()
     {
-        
+        MakeSingleton(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateCoins()
     {
-        
+        if (coinCountingText)
+            coinCountingText.text = "COINS : " + Pref.Coins;
     }
 }

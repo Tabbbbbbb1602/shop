@@ -61,7 +61,9 @@ public class ShopDialog : Dialog
             if (shopItemId == Pref.CurPlayerId) return;
 
             Pref.CurPlayerId = shopItemId;
-            Debug.Log("Da mua hang thanh cong 1");
+
+            GameManager.Ins.ActivePlayer();
+
             UpdateUI();
         }
         else
@@ -73,7 +75,10 @@ public class ShopDialog : Dialog
                 Pref.SetBool(PrefConst.PLAYER_PEFIX + shopItemId, true);
 
                 Pref.CurPlayerId = shopItemId;
-                Debug.Log("Da mua hang thanh cong 2");
+
+                GUIManager.Ins.UpdateCoins();
+
+                GameManager.Ins.ActivePlayer();
                 UpdateUI();
             }
             else
